@@ -1,31 +1,51 @@
+/*--------SERVIDOR ESTATICO CON EXPRESS-------*/
+
 const express = require('express');
 const app = express();
+let port = 3000;
+
 const usuariosRouter = require('./routes/usuarios');
-const PORT = process.env.PORT || 3000;
-const path = require('path'); // Importa el módulo path
-
-
-
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-
 
 app.use(express.json());
 
+app.use('/usuarios',usuariosRouter);
 
-app.use('/usuarios', usuariosRouter);
-
-// Middleware para servir archivos estáticos desde la carpeta public
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-
-app.listen(PORT, () =>
+app.get('/', (req,res) => 
 {
-    console.log(`Servidor corriendo en ${PORT}`);
+    res.send('HOLA DESDE EL PUERTO LOCALHOST:3000');
 });
 
-app.get('/',(req,res)=> 
+app.listen(port , () => 
 {
-    res.send('server funcionando con express');
+    console.log(`Servidor ejecutandose en el puert ${port}`)
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+app.get("/", (req,res) => 
+{
+    //enviar solo un mensaje (texto plano)
+    //res.send('CHAU CHAU desde un SERVIDOR DE EXPRESS  Y PROBANDOSE CON NODEMON');
+
+    //enviar un SOLO archivo
+    //res.sendFile(__dirname + '/public/index.html');
+    //res.sendFile(__dirname + '/public/estilos.css');
+
+});
+*/
