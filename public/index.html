@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario CRUD de Usuarios</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Gestión de Usuarios</h1>
+
+    <!-- Botón para mostrar el formulario de creación de usuario -->
+    <button id="mostrarCrearUsuarioFormBtn">+ Crear Usuario</button>
+
+    <!-- Formulario para crear un nuevo usuario -->
+    <form id="crearUsuarioForm" class="hidden" enctype="multipart/form-data">
+        <h2>Crear Usuario</h2>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required>
+        <label for="mail">Email:</label>
+        <input type="email" id="mail" name="mail" required>
+
+
+
+
+        <label for="archivo">Archivo:</label>
+        <input type="file" id="archivo" name="archivo">
+        <button type="submit">Crear Usuario</button>
+    </form>
+
+    <!-- Formulario para editar un usuario -->
+    <form id="editarUsuarioForm" class="hidden" enctype="multipart/form-data">
+        <h2>Editar Usuario</h2>
+        <input type="hidden" id="editId" name="editId">
+        <label for="editNombre">Nombre:</label>
+        <input type="text" id="editNombre" name="editNombre" required>
+        <label for="editApellido">Apellido:</label>
+        <input type="text" id="editApellido" name="editApellido" required>
+        <label for="editMail">Email:</label>
+        <input type="email" id="editMail" name="editMail" required>
+
+
+        
+        <label for="editArchivo">Archivo:</label>
+        <img id="currentImage" src="" alt="Imagen Actual" width="200px" height="200px">
+        <input type="file" id="editArchivo" name="editArchivo">
+        <button type="submit">Actualizar Usuario</button>
+    </form>
+
+    <!-- Sección para mostrar todos los usuarios -->
+    <h2>Lista de Usuarios</h2>
+    <button id="listarUsuariosBtn">Listar Todos los Usuarios</button>
+    <ul id="listaUsuarios"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
