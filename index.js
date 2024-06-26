@@ -1,19 +1,25 @@
 /*--------SERVIDOR ESTATICO CON EXPRESS-------*/
-
+let port = 3000;
 const express = require('express');
 const app = express();
-let port = 3000;
-
 const usuariosRouter = require('./routes/usuarios');
+const path = require('path');
+
+
 
 app.use(express.json());
 
 app.use('/usuarios',usuariosRouter);
 
+/*
 app.get('/', (req,res) => 
 {
     res.send('HOLA DESDE EL PUERTO LOCALHOST:3000');
 });
+*/
+
+app.use(express.static(path.join(__dirname,'public')));
+
 
 app.listen(port , () => 
 {
