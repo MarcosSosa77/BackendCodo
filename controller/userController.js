@@ -3,7 +3,7 @@ const db = require('../db/db');
 
 const ObtenerTodosLosUsuarios = (req,res) => 
 {
-    const sql = 'SELECT * FROM usuarios';
+    const sql = 'SELECT * FROM usuarios_db';
 
     db.query(sql, (err,result) => 
     {
@@ -16,7 +16,7 @@ const ObtenerTodosLosUsuarios = (req,res) =>
 
 const ObtenerUsuarioPorId = (req, res) =>{
     const {id} = req.params;
-    const sql = 'SELECT * FROM usuarios WHERE id = ?';
+    const sql = 'SELECT * FROM usuarios_db WHERE id = ?';
     db.query(sql,[id], (err,result) =>
     {
         if(err) throw err;        
@@ -29,7 +29,7 @@ const crearUsuario = (req, res) =>{
     const {nombre,apellido,mail} = req.body;
 
 
-    const sql = 'INSERT INTO usuarios (nombre,apellido,mail) VALUES (?,?,?)';
+    const sql = 'INSERT INTO usuarios_db (nombre,apellido,mail) VALUES (?,?,?)';
 
 
     db.query(sql,[nombre,apellido,mail], (err,result) =>
@@ -54,7 +54,7 @@ const ActualizarUsuario = (req, res) =>{
     const {nombre,apellido,mail} = req.body;
 
 
-    const sql = 'UPDATE usuarios SET nombre = ?, apellido = ?, mail = ? WHERE id = ?';
+    const sql = 'UPDATE usuarios_db SET nombre = ?, apellido = ?, mail = ? WHERE id = ?';
     db.query(sql,[nombre,apellido,mail,id], (err,result) =>
     {
         if(err) throw err;
@@ -72,7 +72,7 @@ const ActualizarUsuario = (req, res) =>{
 
 const BorrarUsuario = (req, res) =>{
     const {id} = req.params;
-    const sql  = 'DELETE FROM usuarios WHERE id= ?';
+    const sql  = 'DELETE FROM usuarios_db WHERE id= ?';
     db.query(sql,[id],(err,result) =>
     {
         if(err) throw err;
