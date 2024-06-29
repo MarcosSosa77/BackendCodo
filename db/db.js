@@ -1,4 +1,6 @@
 require('dotenv').config();
+//require('dotenv').config({ path: 'BBDD.env' });
+
 
 const mySql = require('mysql2');
 
